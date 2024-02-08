@@ -37,13 +37,12 @@ function organizeGifts(gifts) {
   const giftsArray = gifts.match(/\d+[a-z]/g);
   let result = '';
 
-  const gift = 1;
   const boxes = 10;
   const pallets = 50;
 
-  for (let i = 0; i < giftsArray.length; i++) {
-    const typeGift = giftsArray[i].substring(giftsArray[i].length - 1);
-    const quantityGift = parseInt(giftsArray[i].substring(0, giftsArray[i].length - 1));
+  for (let gift of giftsArray) {
+    const typeGift = gift.at(-1);
+    const quantityGift = parseInt(gift.slice(0, -1));
 
     let giftPallets = Math.floor(quantityGift / pallets);
     let giftBoxes = Math.floor((quantityGift % pallets) / boxes);
